@@ -316,13 +316,15 @@ class NPB:
     def __del__(self) -> None:
         self._reset()
 
-    def cancel(self) -> None:
-        '''Cancel the current progress bar instance.'''
-        cls = self.__class__
-        if len(cls._iterators) <= 1:
-            self._reset()
-        else:
-            cls._iterators = cls._iterators[:-1]
+    # # TODO: Since each call to NPB() returns the same instance, we can't cancel specific bars,
+    # # so this method always cancels the innermost loop
+    # def cancel(self) -> None:
+    #     '''Cancel the current progress bar instance.'''
+    #     cls = self.__class__
+    #     if len(cls._iterators) <= 1:
+    #         self._reset()
+    #     else:
+    #         cls._iterators = cls._iterators[:-1]
 
 
 def nrange(*args, **kwargs):
