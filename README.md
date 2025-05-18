@@ -1,6 +1,6 @@
 # Nested Progress Bar (NPB)
 
-[![Python Version](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
+[![Python Version](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) A `tqdm`-like progress bar that elegantly supports nested iterations, allowing you to track progress through multiple loops simultaneously without garbled output.
 
 ---
@@ -66,10 +66,10 @@ import time
 from NPB import NPB, nrange
 
 for i in NPB(range(5), desc="Level 1"):
-    for j in NPB(range(50), desc="Level 2", text_color="yellow"):
+    for j in NPB(range(20), desc="Level 2", text_color="yellow", bg_color="blue"):
         # For the innermost loop, we can use nrange for convenience
-        for k in nrange(20, desc="Level 3", text_color="cyan", rainbow=True):
-            time.sleep(0.001)
+        for k in nrange(20, desc="Level 3", text_color="cyan", rainbow=True, update_interval=0.005):
+            time.sleep(0.005)
     time.sleep(0.1)
 
 print("All done!")
@@ -168,5 +168,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 -----
 
 Happy iterating\! 🎉
-
-```
